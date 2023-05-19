@@ -39,13 +39,43 @@ const questions = [
         name: 'tests',
         message: 'How can you test your project?'
     },
+    {
+        type: 'input',
+        name: 'questions',
+        message: 'How can you test your project?'
+    },
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    return new Promise((resolve, reject) =>{
+        fs.writeFile(fileName, data, err =>{
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'Your file has been created!'
+            });
+        });
+    });
+};
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then(answers =>{
+        return generateMarkdown(answers);
+    })
+    .then(pageMarkdown =>{
+        writeToFile('./dist/README.md', pageMarkdown);
+        console.log('README.md created')
+    })
+    .catch((error) =>{
+        console.log(error);
+    });
+}
 
 // Function call to initialize app
 init();
