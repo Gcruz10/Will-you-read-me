@@ -11,8 +11,18 @@ const questions = [
     },
     {
         type: 'input',
+        name: 'user story',
+        message: 'What is your user story?'
+    },
+    {
+        type: 'input',
         name: 'description',
         message: 'In detail describe your project.'
+    },
+    {
+        type: 'input',
+        name: 'acceptance criteria',
+        message: 'What are the acceptance criteria for your project?'
     },
     {
         type: 'input',
@@ -43,6 +53,12 @@ const questions = [
         type: 'input',
         name: 'questions',
         message: 'How can you test your project?'
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What license would you like to use?',
+        choices: ['MIT', 'Apache', 'GPL', 'BSD', 'None']
     },
 ];
 
